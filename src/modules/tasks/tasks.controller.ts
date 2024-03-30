@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto, CreateTaskResponseDto } from './dtos';
 
@@ -16,5 +16,12 @@ export class TasksController {
       content: createTask.content,
       completed: createTask.completed,
     };
+  }
+
+  @Get()
+  async findAll() {
+    const tasks = await this.tasksService.findAll();
+
+    return tasks;
   }
 }

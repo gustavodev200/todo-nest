@@ -21,4 +21,10 @@ export class TasksService {
       data: data,
     });
   }
+
+  async findAll(): Promise<Task[]> {
+    const tasks = await this.prisma.task.findMany();
+
+    return tasks;
+  }
 }
